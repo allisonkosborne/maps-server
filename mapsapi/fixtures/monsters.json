@@ -1,0 +1,35 @@
+[
+  {
+    "model": "mapsapi.monster",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "name": "Larry",
+      "species": "chupacabra",
+      "location": "Nashville",
+      "food": "anything and everything"
+    }
+  },
+  {
+    "model": "mapsapi.monster",
+    "pk": 2,
+    "fields": {
+      "user": 1,
+      "name": "The Sorceress",
+      "species": "witch",
+      "location": "Nashville",
+      "food": "children"
+    }
+  },
+  {
+    "model": "mapsapi.monster",
+    "pk": 3,
+    "fields": {
+      "user": 1,
+      "name": "Cheryl",
+      "species": "banshee",
+      "location": "Nashville",
+      "food": "humans - preferably male"
+    }
+  }
+]

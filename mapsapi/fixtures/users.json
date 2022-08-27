@@ -1,0 +1,32 @@
+[
+  {
+    "model": "mapsapi.user",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "species": "human",
+      "location": "Nashville",
+      "weapon": "chainsaw"
+    }
+  },
+  {
+    "model": "mapsapi.user",
+    "pk": 2,
+    "fields": {
+      "user": 2,
+      "species": "human",
+      "location": "Tokyo",
+      "weapon": "swords"
+    }
+  },
+  {
+    "model": "mapsapi.user",
+    "pk": 3,
+    "fields": {
+      "user": 3,
+      "species": "human",
+      "location": "Dublin",
+      "weapon": "kitchen knife"
+    }
+  }
+]

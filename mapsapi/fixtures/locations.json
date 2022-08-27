@@ -1,0 +1,23 @@
+[
+  {
+    "model": "mapsapi.location",
+    "pk": 1,
+    "fields": {
+      "name": "Nashville"
+    }
+  },
+  {
+    "model": "mapsapi.location",
+    "pk": 2,
+    "fields": {
+      "name": "Tokyo"
+    }
+  },
+  {
+    "model": "mapsapi.location",
+    "pk": 3,
+    "fields": {
+      "name": "Dublin"
+    }
+  }
+]

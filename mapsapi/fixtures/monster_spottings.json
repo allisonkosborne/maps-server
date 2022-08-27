@@ -1,0 +1,35 @@
+[
+  {
+    "model": "mapsapi.monster_spotting",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "location": "Nashville",
+      "monster": "Dracula",
+      "date": "2022-05-24",
+      "time": "20:00"
+    }
+  },
+  {
+    "model": "mapsapi.monster_spotting",
+    "pk": 2,
+    "fields": {
+      "user": 1,
+      "location": "Nashville",
+      "monster": "Boogie Man",
+      "date": "2022-06-25",
+      "time": "10:00"
+    }
+  },
+  {
+    "model": "mapsapi.monster_spotting",
+    "pk": 3,
+    "fields": {
+      "user": 1,
+      "location": "Nashville",
+      "monster": "Big Foot",
+      "date": "2022-08-05",
+      "time": "08:00"
+    }
+  }
+]
