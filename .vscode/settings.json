@@ -4,5 +4,14 @@
   "python.linting.pylintArgs": [
     "--load-plugins=pylint_django",
     "--django-settings-module=maps.settings"
-  ]
+  ],
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "driver": "SQLite",
+      "name": "database",
+      "database": "/Users/allisonosborne/workspace/levelup-server/db.sqlite3"
+    }
+  ],
+  "sqltools.useNodeRuntime": true
 }

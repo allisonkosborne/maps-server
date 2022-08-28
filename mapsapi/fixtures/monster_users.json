@@ -1,0 +1,10 @@
+[
+  {
+    "model": "mapsapi.MonsterUser",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "weapon": "chainsaw"
+    }
+  }
+]

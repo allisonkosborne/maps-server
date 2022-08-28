@@ -1,5 +1,5 @@
-from .user import User
-from .monster import Monster
+from .monster_user import MonsterUser
+from .species import Species
 from .monster_spotting import MonsterSpotting
 from .location import Location
 
