@@ -28,6 +28,12 @@ class LocationView(ViewSet):
     serializer = LocationSerializer(location, many=True)
     return Response(serializer.data)
   
+  # def create(self, request):
+  #   """handle POST operations
+  #   Returns
+  #     Response -- JSON serialized location
+  #   """
+  
 class LocationSerializer(serializers.ModelSerializer):
   """JSON serializer for locations"""
   class Meta:

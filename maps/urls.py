@@ -16,11 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls import include
 from django.urls import path
-from mapsapi.views import register_user, login_user, location
+from mapsapi.views import register_user, login_user, location, species, monster_spotting
 from rest_framework import routers
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'locations', location.LocationView, 'location')
+router.register(r'species', species.SpeciesView, 'species')
+router.register(r'monster_spottings', monster_spotting.MonsterSpottingView, 'monster_spotting')
 
 urlpatterns = [
     path('register', register_user),
