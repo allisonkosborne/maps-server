@@ -36,7 +36,7 @@ def login_user(request):
   
 @api_view(['POST'])
 @permission_classes([AllowAny])
-def refister_user(request):
+def register_user(request):
   '''Handles the creation of a new user for authentication
   Method arguments:
   request --- The full HTTP request object'''
