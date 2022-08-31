@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls import include
 from django.urls import path
-from mapsapi.views import register_user, login_user, location, species, monster_spotting
+from mapsapi.views import register_user, login_user, location, species, monster_spotting 
 from rest_framework import routers
 
 router = routers.DefaultRouter(trailing_slash=False)
