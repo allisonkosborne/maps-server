@@ -15,14 +15,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.conf.urls import include
-from django.urls import path
-from mapsapi.views import register_user, login_user, location, species, monster_spotting 
 from rest_framework import routers
+from django.urls import path
+from django.conf.urls import include
+from rest_framework import routers
+from mapsapi.views import register_user, login_user
+from mapsapi.views.location import LocationView
+from mapsapi.views.species import SpeciesView
+from mapsapi.views.monster_spotting import MonsterSpottingView
+from mapsapi.views.monster_user import MonsterUserView
 
 router = routers.DefaultRouter(trailing_slash=False)
-router.register(r'locations', location.LocationView, 'location')
-router.register(r'species', species.SpeciesView, 'species')
-router.register(r'monster_spottings', monster_spotting.MonsterSpottingView, 'monster_spotting')
+router.register(r'locations', LocationView, 'location')
+router.register(r'species', SpeciesView, 'species')
+router.register(r'monster_spottings', MonsterSpottingView, 'monster_spotting')
+router.register(r'monster_users', MonsterUserView, 'monster_user')
 
 urlpatterns = [
     path('register', register_user),

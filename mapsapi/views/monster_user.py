@@ -37,10 +37,10 @@ class MonsterUserSerializer(serializers.ModelSerializer):
         fields = ('user', 'weapon')
         # depth = 1
         
-class UserPostSerializer(serializers.ModelSerializer):
-    """JSON serializer for users
-    """
-    user = MonsterUserSerializer(many=False)
-    class Meta:
-        model = MonsterSpotting
-        fields = ('date', 'time','location')
+# class MonsterSpottingSerializer(serializers.ModelSerializer):
+#     """JSON serializer for users
+#     """
+#     user = MonsterUserSerializer(many=False)
+#     class Meta:
+#         model = MonsterSpotting
+#         fields = ('date', 'time','location')
