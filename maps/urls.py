@@ -28,8 +28,8 @@ from mapsapi.views.monster_user import MonsterUserView
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'locations', LocationView, 'location')
 router.register(r'species', SpeciesView, 'species')
-router.register(r'monster_spottings', MonsterSpottingView, 'monster_spotting')
-router.register(r'monster_users', MonsterUserView, 'monster_user')
+router.register(r'spottings', MonsterSpottingView, 'spotting')
+router.register(r'users', MonsterUserView, 'user')
 
 urlpatterns = [
     path('register', register_user),

@@ -8,7 +8,7 @@ from rest_framework.decorators import action
 class MonsterUserView(ViewSet):
   """"User View"""
   # @permission_classes([AllowAny])
-  def  retrieve(self, request, pk):
+  def retrieve(self, request, pk):
     users = MonsterUser.objects.get(pk=pk)
     serializers = MonsterUserSerializer(users)
     return Response(serializers.data)
@@ -34,7 +34,7 @@ class MonsterUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = MonsterUser
 
-        fields = ('user', 'weapon')
+        fields = ('first_name', 'last_name', 'weapon')
         # depth = 1
         
 # class MonsterSpottingSerializer(serializers.ModelSerializer):

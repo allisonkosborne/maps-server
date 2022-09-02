@@ -48,5 +48,5 @@ class MonsterSpottingSerializer(serializers.ModelSerializer):
   """JSON serializer for monster spottings"""
   class Meta:
     model = MonsterSpotting
-    fields = ('id','monster_date','monster_time', 'location_id', 'monster_user_id', 'species_id')
+    fields = ('monster_user', 'location', 'species', 'date', 'time')
     
