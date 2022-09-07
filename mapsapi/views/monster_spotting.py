@@ -32,18 +32,28 @@ class MonsterSpottingView(ViewSet):
       Response -- JSON serialized monster spotting
     """
     monster_user = MonsterUser.objects.get(user=request.auth.user)
-    location = Location.objects.get(pk=request.data["location"])
-    species = Species.objects.get(pk=request.data["species"])
+    # species = Species.objects.get(user=request.auth.user)
+    serializer = CreateMonsterSpottingSerializer(data=request.data)
+    serializer.is_valid(raise_exception=True)
+    monster_spotting = serializer.save(monster_user=monster_user)
+    # res_serializer = SpeciesSerializer(species)
+    serializer.is_valid(raise_exception=True)
+    return Response(serializer.data, status=status.HTTP_201_CREATED)
     
-    monster_spotting = MonsterSpotting.objects.create(
-      location=location,
-      species=species,
-      monster_user=monster_user,
-      date=request.data["date"],
-      time=request.data["time"]
-    )
-    serializer = CreateMonsterSpottingSerializer(monster_spotting)
-    return Response(serializer.data)
+    
+    # monster_user = MonsterUser.objects.get(user=request.auth.user)
+    # location = Location.objects.get(pk=request.data["location"])
+    # species = Species.objects.get(pk=request.data["species"])
+    
+    # monster_spotting = MonsterSpotting.objects.create(
+    #   location=location,
+    #   species=species,
+    #   monster_user=monster_user,
+    #   date=request.data["date"],
+    #   time=request.data["time"]
+    # )
+    # serializer = CreateMonsterSpottingSerializer(monster_spotting)
+    # return Response(serializer.data)
   
   def update(self, request: Request, pk):
         """Handles PUT request for a game, returning a 204 with no body on success"""
