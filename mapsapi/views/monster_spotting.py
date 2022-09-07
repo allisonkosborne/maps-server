@@ -36,9 +36,8 @@ class MonsterSpottingView(ViewSet):
     serializer = CreateMonsterSpottingSerializer(data=request.data)
     serializer.is_valid(raise_exception=True)
     monster_spotting = serializer.save(monster_user=monster_user)
-    # res_serializer = SpeciesSerializer(species)
-    serializer.is_valid(raise_exception=True)
-    return Response(serializer.data, status=status.HTTP_201_CREATED)
+    res_serializer = MonsterSpottingSerializer(monster_spotting)
+    return Response(res_serializer.data, status=status.HTTP_201_CREATED)
     
     
     # monster_user = MonsterUser.objects.get(user=request.auth.user)
