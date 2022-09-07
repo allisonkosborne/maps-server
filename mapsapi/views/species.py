@@ -37,19 +37,19 @@ class SpeciesView(ViewSet):
         serializer.is_valid(raise_exception=True)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
       
-  # def update(self, request: Request, pk):
-  #       """Handles PUT request for a game, returning a 204 with no body on success"""
-  #       species = Species.objects.get(pk=pk)
-  #       serializer = SpeciesSerializer(species, data=request.data)
-  #       serializer.is_valid(raise_exception=True)
-  #       serializer.save()
+  def update(self, request: Request, pk):
+        """Handles PUT request for a game, returning a 204 with no body on success"""
+        species = Species.objects.get(pk=pk)
+        serializer = SpeciesSerializer(species, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
 
-  #       return Response(None, status=status.HTTP_204_NO_CONTENT)
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
     
-  # def destroy(self, request, pk):
-  #       species = Species.objects.get(pk=pk)
-  #       species.delete()
-  #       return Response(None, status=status.HTTP_204_NO_CONTENT)
+  def destroy(self, request, pk):
+        species = Species.objects.get(pk=pk)
+        species.delete()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
   
 class SpeciesSerializer(serializers.ModelSerializer):
   """JSON serializer for species"""

@@ -45,30 +45,30 @@ class MonsterSpottingView(ViewSet):
     serializer = CreateMonsterSpottingSerializer(monster_spotting)
     return Response(serializer.data)
   
-  # def update(self, request: Request, pk):
-  #       """Handles PUT request for a game, returning a 204 with no body on success"""
-  #       monster_spotting = MonsterSpotting.objects.get(pk=pk)
-  #       serializer = CreateMonsterSpottingSerializer(monster_spotting, data=request.data)
-  #       serializer.is_valid(raise_exception=True)
-  #       serializer.save()
+  def update(self, request: Request, pk):
+        """Handles PUT request for a game, returning a 204 with no body on success"""
+        monster_spotting = MonsterSpotting.objects.get(pk=pk)
+        serializer = CreateMonsterSpottingSerializer(monster_spotting, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
 
-  #       return Response(None, status=status.HTTP_204_NO_CONTENT)  
+        return Response(None, status=status.HTTP_204_NO_CONTENT)  
       
-  # def destroy(self, request, pk):
-  #       monster_spotting = MonsterSpotting.objects.get(pk=pk)
-  #       monster_spotting.delete()
-  #       return Response(None, status=status.HTTP_204_NO_CONTENT)
+  def destroy(self, request, pk):
+        monster_spotting = MonsterSpotting.objects.get(pk=pk)
+        monster_spotting.delete()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
     
 class MonsterSpottingSerializer(serializers.ModelSerializer):
   """JSON serializer for monster spottings"""
   class Meta:
     model = MonsterSpotting
-    fields = ('monster_user', 'location', 'species', 'date', 'time')
+    fields = ('id', 'monster_user', 'location', 'species', 'date', 'time')
     depth = 1
     
 class CreateMonsterSpottingSerializer(serializers.ModelSerializer):
   """JSON serializer for monster spottings"""
   class Meta:
     model = MonsterSpotting
-    fields = ('monster_user', 'location', 'species', 'date', 'time')
+    fields = ('id', 'monster_user', 'location', 'species', 'date', 'time')
     
