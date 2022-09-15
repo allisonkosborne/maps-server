@@ -2,8 +2,9 @@
 from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
+from rest_framework.request import Request
 from rest_framework import serializers, status
-from mapsapi.models import Location
+from mapsapi.models import Location, location
 from mapsapi.models import MonsterUser
 
 class LocationView(ViewSet):
@@ -38,6 +39,18 @@ class LocationView(ViewSet):
         # res_serializer = SpeciesSerializer(species)
         serializer.is_valid(raise_exception=True)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+      
+  def update(self, request: Request, pk):
+        """Handles PUT request for a game, returning a 204 with no body on success"""
+        location = Location.objects.get(pk=pk)
+        serializer = LocationSerializer(location, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        
+  def destroy(self, request, pk):
+        location = Location.objects.get(pk=pk)
+        location.delete()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
   
 class LocationSerializer(serializers.ModelSerializer):
   """JSON serializer for locations"""

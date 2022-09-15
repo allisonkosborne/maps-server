@@ -4,7 +4,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework.request import Request
 from rest_framework import serializers, status
-from mapsapi.models import MonsterSpotting, MonsterUser, Location, Species, monster_spotting, monster_user
+from mapsapi.models import MonsterSpotting, MonsterUser, Location, Species, location, monster_spotting, monster_user, species
 
 class MonsterSpottingView(ViewSet):
   """MAPS monster spotting view"""
@@ -31,37 +31,26 @@ class MonsterSpottingView(ViewSet):
     Returns
       Response -- JSON serialized monster spotting
     """
-    monster_user = MonsterUser.objects.get(user=request.auth.user)
-    # species = Species.objects.get(user=request.auth.user)
-    serializer = CreateMonsterSpottingSerializer(data=request.data)
-    serializer.is_valid(raise_exception=True)
-    monster_spotting = serializer.save(monster_user=monster_user)
-    res_serializer = MonsterSpottingSerializer(monster_spotting)
-    return Response(res_serializer.data, status=status.HTTP_201_CREATED)
-    
-    
-    # monster_user = MonsterUser.objects.get(user=request.auth.user)
-    # location = Location.objects.get(pk=request.data["location"])
-    # species = Species.objects.get(pk=request.data["species"])
-    
-    # monster_spotting = MonsterSpotting.objects.create(
-    #   location=location,
-    #   species=species,
-    #   monster_user=monster_user,
-    #   date=request.data["date"],
-    #   time=request.data["time"]
-    # )
-    # serializer = CreateMonsterSpottingSerializer(monster_spotting)
-    # return Response(serializer.data)
-  
-  def update(self, request: Request, pk):
-        """Handles PUT request for a game, returning a 204 with no body on success"""
-        monster_spotting = MonsterSpotting.objects.get(pk=pk)
-        serializer = CreateMonsterSpottingSerializer(monster_spotting, data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
+    monster_spotting = MonsterSpotting.objects.create(
+      monster_user = MonsterUser.objects.get(user=request.auth.user),
+      location= Location.objects.get(id=request.data["location"]),
+      species=Species.objects.get(id=request.data["species"]),
+      date=request.data["date"],
+      time=request.data["time"]
+    )
+    serializer = CreateMonsterSpottingSerializer(monster_spotting)
+    return Response(serializer.data)
 
-        return Response(None, status=status.HTTP_204_NO_CONTENT)  
+  def update(self, request, pk):
+    """Handle PUT requests for monster spottings Returns: Response - empty body with 204 status code"""
+    monster_spotting = MonsterSpotting.objects.get(pk=pk)
+    # monster_user=MonsterUser.objects.get(user=request.data["monster_user"]),
+    monster_spotting.species = Species.objects.get(id=request.data["species"])
+    monster_spotting.location = Location.objects.get(id=request.data["location"])
+    monster_spotting.time = request.data["time"]
+    monster_spotting.date = request.data["date"]
+    monster_spotting.save()
+    return Response(None, status=status.HTTP_204_NO_CONTENT)
       
   def destroy(self, request, pk):
         monster_spotting = MonsterSpotting.objects.get(pk=pk)
@@ -79,5 +68,5 @@ class CreateMonsterSpottingSerializer(serializers.ModelSerializer):
   """JSON serializer for monster spottings"""
   class Meta:
     model = MonsterSpotting
-    fields = ('id', 'monster_user', 'location', 'species', 'date', 'time')
+    fields = ('id', 'monster_user_id', 'location', 'species', 'date', 'time')
     
